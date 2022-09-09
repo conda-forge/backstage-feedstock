@@ -1,5 +1,5 @@
 {% set name = "backstage" %}
-{% set version = "0.0.9" %}
+{% set version = "0.0.10" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/backstage-{{ version }}.tar.gz
-  sha256: 5ed2d78a2090b8d076e9f1a653977c9b117dd34ab56fceddd9750e346008604d
+  sha256: bbe0da6396646c3d4550d5a2bea64f94f144f83076d206cb5de27c37a6f8c29c
 
 build:
   entry_points:
@@ -21,19 +21,24 @@ requirements:
     - pip
     - python >=3.5
   run:
-    - buildver
-    - hackernote
+    - oscan
     - python >=3.5
-    - setupinit
+    - shared
     - subrun
 
 test:
+  source_files:
+    - tests
   imports:
     - backstage
   commands:
     - pip check
+    - backstage --help
+    # Remove test suite for now
+    # - pytest -vvv --capture=tee-sys tests
   requires:
     - pip
+    - pytest
 
 about:
   home: https://github.com/pyrustic/backstage
