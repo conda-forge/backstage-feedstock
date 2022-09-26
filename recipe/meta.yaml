@@ -1,5 +1,5 @@
 {% set name = "backstage" %}
-{% set version = "0.0.17" %}
+{% set version = "0.0.19" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/backstage-{{ version }}.tar.gz
-  sha256: 4fe86fd80795e7fdd757c60cf387c8b3f23b2cb96e144ecf0711d8afd0c0d0f6
+  sha256: 529579dc41f329ce736e686e86bd32b34352a7fbf7f54daca350c18f547b316d
 
 build:
   entry_points:
