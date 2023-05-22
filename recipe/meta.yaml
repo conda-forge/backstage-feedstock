@@ -21,6 +21,7 @@ requirements:
     - pip
     - python >=3.5
   run:
+    - jesth
     - oscan
     - python >=3.5
     - shared
