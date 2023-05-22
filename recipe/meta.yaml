@@ -34,6 +34,8 @@ test:
     - backstage
   commands:
     - pip check
+    - echo "[task1]" >> backstage.task
+    - echo "pass" >> backstage.task
     - backstage --help
     # Remove test suite for now
     # - pytest -vvv --capture=tee-sys tests
