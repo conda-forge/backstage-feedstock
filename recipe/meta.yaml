@@ -23,7 +23,7 @@ requirements:
   run:
     - oscan
     - python >=3.5
-    - jesth
+    - jesth >=0.0.8
     - subrun
 
 test:
