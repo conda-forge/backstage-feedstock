@@ -1,5 +1,5 @@
 {% set name = "backstage" %}
-{% set version = "0.0.20" %}
+{% set version = "0.0.22" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/backstage-{{ version }}.tar.gz
-  sha256: cedce3c8fe513b8fa1c9a8bf92d68583971ab8c0ef18f8adf283e0f31cc75e29
+  sha256: 1742d946f199cb2ac0bbb8c7fc2f3810570b54cfbb38338812cc9d329ed54e5b
 
 build:
   entry_points:
@@ -23,7 +23,7 @@ requirements:
   run:
     - oscan
     - python >=3.5
-    - shared
+    - jesth >=0.0.8
     - subrun
 
 test:
@@ -33,6 +33,8 @@ test:
     - backstage
   commands:
     - pip check
+    - echo "[task1]" >> backstage.tasks
+    - echo "pass" >> backstage.tasks
     - backstage --help
     # Remove test suite for now
     # - pytest -vvv --capture=tee-sys tests
