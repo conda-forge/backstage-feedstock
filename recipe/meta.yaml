@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/backstage-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/backstage-{{ version }}.tar.gz
   sha256: 1742d946f199cb2ac0bbb8c7fc2f3810570b54cfbb38338812cc9d329ed54e5b
 
 build:
@@ -14,21 +14,20 @@ build:
     - backstage = backstage.__main__:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
-    - python >=3.5
+    - python {{ python_min }}
+    - setuptools
   run:
     - oscan
-    - python >=3.5
+    - python >={{ python_min }}
     - jesth >=0.0.8
     - subrun
 
 test:
-  source_files:
-    - tests
   imports:
     - backstage
   commands:
@@ -36,11 +35,9 @@ test:
     - echo "[task1]" >> backstage.tasks
     - echo "pass" >> backstage.tasks
     - backstage --help
-    # Remove test suite for now
-    # - pytest -vvv --capture=tee-sys tests
   requires:
     - pip
-    - pytest
+    - python {{ python_min }}
 
 about:
   home: https://github.com/pyrustic/backstage
