@@ -20,6 +20,7 @@ requirements:
   host:
     - pip
     - python {{ python_min }}
+    - setuptools
   run:
     - oscan
     - python >={{ python_min }}
@@ -27,8 +28,6 @@ requirements:
     - subrun
 
 test:
-  source_files:
-    - tests
   imports:
     - backstage
   commands:
@@ -36,11 +35,8 @@ test:
     - echo "[task1]" >> backstage.tasks
     - echo "pass" >> backstage.tasks
     - backstage --help
-    # Remove test suite for now
-    # - pytest -vvv --capture=tee-sys tests
   requires:
     - pip
-    - pytest
     - python {{ python_min }}
 
 about:
